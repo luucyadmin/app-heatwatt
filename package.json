@@ -1,0 +1,9 @@
+{
+  "name": "4af256099f182f421c027623d3d2155e9a2dc0fbd3ce4a098dad86f5cddd4419",
+  "displayName": "Heatwatt Calculator",
+  "author": "Heatwatt Musterfirma",
+  "version": "1.0.0",
+  "dependencies": {
+    "luucy-types": "^2.11.0"
+  }
+}
