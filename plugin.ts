@@ -28,7 +28,7 @@ const totalCost = new ui.LabeledValue(`10 Years + ${(maintenanceCost * 100).toFi
 section.add(totalCost);
 
 // this event will be called whenever a project is selected
-onProjectSelect.subscribe(project => {
+data.onProjectSelect.subscribe(project => {
     // we want to know when a variant is selected, thus we subscribe to this event
     // note the ? after project: the onProjectSelect event will be called with `null` when no project is selected!
     project?.onVariantSelect.subscribe(variant => {
@@ -37,12 +37,12 @@ onProjectSelect.subscribe(project => {
             // using Event.subscribe allows us to subscribe to both events at the same time
             Event.subscribe(variant.onVolumeChange, pricePerVolumeInput.onValueChange, () => {
                 // update the value of the volume label
-                volumeLabel.value = `${variant.volume}m³`;
+                volumeLabel.value = variant.volume.toMetricVolumeString();
 
                 // calculate costs and update the cost values
-                monthlyCostLabel.value = `${(variant.volume * pricePerVolumeInput.value).toFixed(0)}.-`;
-                yearlyCostLabel.value = `${(variant.volume * pricePerVolumeInput.value * 12).toFixed(0)}.-`;
-                totalCost.value = `${(variant.volume * pricePerVolumeInput.value * 12 * 10 * (1 + maintenanceCost)).toFixed(0)}.-`;
+                monthlyCostLabel.value = (variant.volume * pricePerVolumeInput.value).toFloatingString('CHF');
+                yearlyCostLabel.value = (variant.volume * pricePerVolumeInput.value * 12).toFloatingString('CHF');
+                totalCost.value = (variant.volume * pricePerVolumeInput.value * 12 * 10 * (1 + maintenanceCost)).toFloatingString('CHF');
             });
         } else {
             // if no variant is selected, onVariantSelect will be called too

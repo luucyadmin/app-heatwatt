@@ -1,17 +1,19 @@
 {
+	// settings managed by luucy
+	// do not edit
+	//
 	"compilerOptions": {
-		"module": "none",
-		"moduleResolution": "classic",
 		"outFile": "dist.lps",
 		"target": "es2018",
 		"noLib": true,
 		"noEmitHelpers": true,
-		"typeRoots": [
-			"node_modules/luucy-types"
-		]
+		"module": "AMD",
+		"moduleResolution": "classic",
+		"typeRoots": [ ".luucy" ]
 	},
 	"include": [
+		"**/*.ts",
 		"plugin.ts",
-		"node_modules"
+		".luucy/types.d.ts"
 	]
 }

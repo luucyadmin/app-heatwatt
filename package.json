@@ -1,9 +1,16 @@
 {
-  "name": "4af256099f182f421c027623d3d2155e9a2dc0fbd3ce4a098dad86f5cddd4419",
-  "displayName": "Heatwatt Calculator",
-  "author": "Heatwatt Musterfirma",
-  "version": "1.0.0",
-  "dependencies": {
-    "luucy-types": "^3.1.0"
-  }
+	"name": "heatwatt",
+	"displayName": "Heatwatt Calculator",
+	"author": "luucy AG",
+	"icon": "icon.svg",
+	"version": "1.0.0",
+	"dependencies": {
+		"luucy-types": "^8.14.4"
+	},
+	"scopes": [
+		"core",
+		"ui",
+		"data",
+		"map"
+	]
 }
