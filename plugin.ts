@@ -1,3 +1,5 @@
+import i18n from './i18n'
+
 // lets define the maintenance cost as a constant
 // after starting the plugin with `$ luucy serve` try to change this value and watch how luucy will automatically reload the application
 const maintenanceCost = 0.28;
@@ -9,23 +11,24 @@ const section = ui.createProjectPanelSection();
 
 // will show the total volume of the variants buildings
 // we'll leave the value empty for now
-const volumeLabel = new ui.LabeledValue("Volume");
+const volumeLabel = new ui.LabeledValue(i18n.Volume());
 section.add(volumeLabel);
 
 // a numerical input allows the users to set a custom price per m³
 // we'll subscribe to the onValueChange event of this input later on to catch whenever a user changes the price
-const pricePerVolumeInput = new ui.NumberField("Heating cost per month per m³", 4.269);
+const pricePerVolumeInput = new ui.NumberField(i18n.Heating_Cost_Per_Cubic_Meter(), 4.269);
 section.add(pricePerVolumeInput);
 
 // the following labels will be updated with the calculated values when the volume or price changes
-const monthlyCostLabel = new ui.LabeledValue("Monthly cost");
+const monthlyCostLabel = new ui.LabeledValue(i18n.Monthly_Cost());
 section.add(monthlyCostLabel);
 
-const yearlyCostLabel = new ui.LabeledValue("Yearly cost");
+const yearlyCostLabel = new ui.LabeledValue(i18n.Yearly_Cost());
 section.add(yearlyCostLabel);
 
-const totalCost = new ui.LabeledValue(`10 Years + ${(maintenanceCost * 100).toFixed(0)}% Maintenance`);
+const totalCost = new ui.LabeledValue(i18n.Total_Cost_10_Years()({maintenanceCost: (maintenanceCost * 100).toFixed(0)}));
 section.add(totalCost);
+
 
 // this event will be called whenever a project is selected
 data.onProjectSelect.subscribe(project => {

@@ -3,9 +3,13 @@
 	"displayName": "Heatwatt Calculator",
 	"author": "luucy AG",
 	"icon": "icon.svg",
+	"productId": 239,
 	"version": "1.0.0",
 	"dependencies": {
 		"luucy-types": "^8.14.4"
+	},
+	"devDependencies": {
+		"typescript": "^4.7.4"
 	},
 	"scopes": [
 		"core",
