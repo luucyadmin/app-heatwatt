@@ -1,6 +1,6 @@
-import de from "./i18n/de";
-import en from "./i18n/en";
-import fr from "./i18n/fr";
+import de from "./i18n/heatwatt.en";
+import en from "./i18n/heatwatt.en";
+import fr from "./i18n/heatwatt.fr";
 
 type I18nParams = {[key: string]: any};
 type I18nFunction = {
