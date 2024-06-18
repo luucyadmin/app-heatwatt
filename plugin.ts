@@ -26,7 +26,7 @@ section.add(monthlyCostLabel);
 const yearlyCostLabel = new ui.LabeledValue(i18n.Yearly_Cost());
 section.add(yearlyCostLabel);
 
-const totalCost = new ui.LabeledValue(i18n.Total_Cost_10_Years()({maintenanceCost: (maintenanceCost * 100).toFixed(0)}));
+const totalCost = new ui.LabeledValue(i18n.Total_Cost_10_Years({maintenanceCost: (maintenanceCost * 100).toFixed(0)}));
 section.add(totalCost);
 
 
