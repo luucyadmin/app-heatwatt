@@ -38,14 +38,20 @@ data.onProjectSelect.subscribe(project => {
         if (variant) {
             // we want to get notified whenever the volume changes (eg. new building placed or modified) or when the user changes the price input
             // using Event.subscribe allows us to subscribe to both events at the same time
-            Event.subscribe(variant.onVolumeChange, pricePerVolumeInput.onValueChange, () => {
+            Event.subscribe(pricePerVolumeInput.onValueChange, () => {
+                // calculate costs and update the cost values
+                monthlyCostLabel.value = (variant.totalVolume.total * pricePerVolumeInput.value).toFloatingString('CHF');
+                yearlyCostLabel.value = (variant.totalVolume.total * pricePerVolumeInput.value * 12).toFloatingString('CHF');
+                totalCost.value = (variant.totalVolume.total * pricePerVolumeInput.value * 12 * 10 * (1 + maintenanceCost)).toFloatingString('CHF');
+            });
+            Event.subscribe(variant.onTotalVolumeChange, () => {
                 // update the value of the volume label
-                volumeLabel.value = variant.volume.toMetricVolumeString();
+                volumeLabel.value = variant.totalVolume.total.toMetricVolumeString();
 
                 // calculate costs and update the cost values
-                monthlyCostLabel.value = (variant.volume * pricePerVolumeInput.value).toFloatingString('CHF');
-                yearlyCostLabel.value = (variant.volume * pricePerVolumeInput.value * 12).toFloatingString('CHF');
-                totalCost.value = (variant.volume * pricePerVolumeInput.value * 12 * 10 * (1 + maintenanceCost)).toFloatingString('CHF');
+                monthlyCostLabel.value = (variant.totalVolume.total * pricePerVolumeInput.value).toFloatingString('CHF');
+                yearlyCostLabel.value = (variant.totalVolume.total * pricePerVolumeInput.value * 12).toFloatingString('CHF');
+                totalCost.value = (variant.totalVolume.total * pricePerVolumeInput.value * 12 * 10 * (1 + maintenanceCost)).toFloatingString('CHF');
             });
         } else {
             // if no variant is selected, onVariantSelect will be called too
