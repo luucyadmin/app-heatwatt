@@ -4,9 +4,9 @@
 	"author": "luucy AG",
 	"icon": "icon.svg",
 	"productId": 239,
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"dependencies": {
-		"luucy-types": "git+ssh://git@gitlab.com:luucy/sdk/luucy-types.git#next/3.9"
+		"luucy-types": "^10.24.21"
 	},
 	"devDependencies": {
 		"typescript": "^5.6.3"
